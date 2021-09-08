@@ -7,8 +7,8 @@
 | nickname           | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
-| last-name          | string | null: false |
-| first-name         | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
 | last_name_kana     | string | null: false |
 | first_name_kana    | string | null: false |
 | birthday           | date   | null: false |
@@ -31,7 +31,7 @@
 | item_prefecture_id          | integer    | null: false |
 | item_scheduled-delivery_id  | integer    | null: false |
 | item_price                  | integer    | null: false |
-| user                     | references |foreign_key:true|    
+| user                     | references |foreign_key:true, null: false |    
 
 ### Association
 
@@ -43,8 +43,8 @@
 
 | Column         | Type       | Options           |
 | ------         | ---------- | -----------       |
-| user           | references | foreign_key: true |
-| item           | references | foreign_key: true |
+| user           | references | foreign_key: true, null: false  |
+| item           | references | foreign_key: true, null: false  |
 
 ### Association
 
@@ -63,7 +63,7 @@
 | addresses             | string      | null: false |
 | building              | string      | null: false |
 | phone_number          | string      | null: false |
-| order           | references  | foreign_key: true |
+| order           | references  | foreign_key: true, null: false  |
 
 ### Association
 
