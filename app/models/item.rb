@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :item_info, presence: true
   validates :item_price, presence: true
   validates :image, presence: true
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  PASSWORD_REGEX = /\A[0-9]+\z/.freeze
   validates_format_of :item_price, with: PASSWORD_REGEX
   validates_inclusion_of :item_price, in:300..9999999
 
