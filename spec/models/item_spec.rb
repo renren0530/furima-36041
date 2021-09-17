@@ -61,17 +61,17 @@ RSpec.describe Item, type: :model do
       it 'item_price が299以下の場合は登録できない' do
         @item.item_price = '200'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is not included in the list')
+        expect(@item.errors.full_messages).to include('Item price must be greater than or equal to 300')
       end
       it 'item_price が10000000以上の場合は登録できない' do
         @item.item_price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is not included in the list')
+        expect(@item.errors.full_messages).to include('Item price must be less than or equal to 9999999')
       end
       it 'item_price が半角数値でなければ登録できない' do
-        @item.item_price = 'お金'
+        @item.item_price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is not included in the list')
+        expect(@item.errors.full_messages).to include('Item price is not a number')
       end
       it 'ユーザーが紐付いていなければ登録できない' do
         @item.user = nil
