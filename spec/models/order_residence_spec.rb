@@ -11,85 +11,77 @@ RSpec.describe OrderResidence, type: :model do
         expect(@order_residence).to be_valid
       end
       it 'buildingは空でも保存できること' do
-        @order_residence.building = ""
+        @order_residence.building = ''
         expect(@order_residence).to be_valid
       end
-    end 
+    end
 
     context '商品登録できないとき' do
       it 'postal_codeが空だと購入できない' do
-        @order_residence.postal_code = ""
+        @order_residence.postal_code = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'item_prefecture_idが空だと購入できない' do
-        @order_residence.item_prefecture_id = ""
+        @order_residence.item_prefecture_id = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("Item prefecture can't be blank")
       end
       it 'cityが空だと購入できない' do
-        @order_residence.city = ""
+        @order_residence.city = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("City can't be blank")
       end
       it 'addressesが空だと購入できない' do
-        @order_residence.addresses = ""
+        @order_residence.addresses = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("Addresses can't be blank")
       end
       it 'phone_numberが空だと購入できない' do
-        @order_residence.phone_number = ""
+        @order_residence.phone_number = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'tokenが空だと購入できない' do
-        @order_residence.token = ""
+        @order_residence.token = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("Token can't be blank")
       end
       it 'item_prefecture_idが空だと購入できない' do
-      @order_residence.item_prefecture_id = 1
-      @order_residence.valid?
-      expect(@order_residence.errors.full_messages).to include("Item prefecture can't be blank")
+        @order_residence.item_prefecture_id = 1
+        @order_residence.valid?
+        expect(@order_residence.errors.full_messages).to include("Item prefecture can't be blank")
       end
       it 'postal_codeは「3桁ハイフン4桁」の半角形式でないと購入できない' do
-        @order_residence.postal_code = "１１１１１１１"
+        @order_residence.postal_code = '１１１１１１１'
         @order_residence.valid?
-        expect(@order_residence.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_residence.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'phone_numberは「10桁以下」だと購入できない' do
-        @order_residence.phone_number = "111111111"
+        @order_residence.phone_number = '111111111'
         @order_residence.valid?
-        expect(@order_residence.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberは「11桁以上」だと購入できない' do
-        @order_residence.phone_number = "111111111111"
+        @order_residence.phone_number = '111111111111'
         @order_residence.valid?
-        expect(@order_residence.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberは全角数値だと購入できない' do
-        @order_residence.phone_number = "１１１１１１１１１１"
+        @order_residence.phone_number = '１１１１１１１１１１'
         @order_residence.valid?
-        expect(@order_residence.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberはハイフンがあると購入できない' do
-        @order_residence.phone_number = "111-1111-111"
+        @order_residence.phone_number = '111-1111-111'
         @order_residence.valid?
-        expect(@order_residence.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
       end
       it 'ユーザーが紐付いていなければ購入できない' do
-        @order_residence.user_id = ""
+        @order_residence.user_id = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("User can't be blank")
       end
-    end  
-  end  
-end  
-     
-      
-
-
-
-     
-
-
+    end
+  end
+end
