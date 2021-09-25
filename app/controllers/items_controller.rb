@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.order.present?
   end
 
   def update
@@ -37,9 +38,9 @@ class ItemsController < ApplicationController
   def destroy
     if @item.destroy
       redirect_to root_path
-    else 
+    else
       render :show
-    end   
+    end
   end
 
   private
@@ -55,5 +56,5 @@ class ItemsController < ApplicationController
 
   def set_action
     redirect_to root_path unless user_signed_in? && @item.user.id == current_user.id
-  end  
+  end
 end
