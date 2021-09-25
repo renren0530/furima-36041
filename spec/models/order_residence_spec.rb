@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe OrderResidence, type: :model do
   before do
     @order_residence = FactoryBot.build(:order_residence)
+    sleep 0.1
   end
 
   describe '商品購入' do
@@ -57,12 +58,12 @@ RSpec.describe OrderResidence, type: :model do
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
-      it 'phone_numberは「10桁以下」だと購入できない' do
+      it 'phone_numberは「9桁以下」だと購入できない' do
         @order_residence.phone_number = '111111111'
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
       end
-      it 'phone_numberは「11桁以上」だと購入できない' do
+      it 'phone_numberは「12桁以上」だと購入できない' do
         @order_residence.phone_number = '111111111111'
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include('Phone number is invalid')
@@ -81,6 +82,11 @@ RSpec.describe OrderResidence, type: :model do
         @order_residence.user_id = ''
         @order_residence.valid?
         expect(@order_residence.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @order_residence.item_id = ''
+        @order_residence.valid?
+        expect(@order_residence.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

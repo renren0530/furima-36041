@@ -9,6 +9,7 @@ class OrderResidence
     validates :phone_number, format: { with: /\A[0-9]{10,11}+\z/ }
     validates :user_id
     validates :token
+    validates :item_id
   end
   validates :item_prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
