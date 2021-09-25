@@ -3,10 +3,7 @@ class OrdersController < ApplicationController
   before_action :action, only:[:index, :create] 
 
   def index
-    unless @item.order.present?
-       if @item.user.id != current_user.id
-       end
-    else 
+    if @item.order.present? || @item.user.id == current_user.id
       redirect_to root_path
     end  
     @order_residence = OrderResidence.new
