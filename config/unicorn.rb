@@ -20,7 +20,7 @@ stderr_path "#{app_path}/shared/log/unicorn.stderr.log"  # 「shared」の中を
 stdout_path "#{app_path}/shared/log/unicorn.stdout.log"  # 「shared」の中を参照するよう変更
 
 #Railsアプリケーションの応答を待つ上限時間を設定
-timeout 60
+timeout 180
 
 #以下は応用的な設定なので説明は割愛
 
@@ -54,4 +54,3 @@ after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
 
-timeout 180
